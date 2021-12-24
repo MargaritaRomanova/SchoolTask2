@@ -1,8 +1,8 @@
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import rita.model.CalculatorException;
+import model.CalculatorException;
 
-import static rita.model.Calculator.execute;
+import static model.Calculator.execute;
 
 public class NegativeCalculatorTest {
 

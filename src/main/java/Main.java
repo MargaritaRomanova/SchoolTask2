@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-import static rita.model.Calculator.execute;
+import static model.Calculator.execute;
 
 public class Main {
     public static void main(String[] args) {

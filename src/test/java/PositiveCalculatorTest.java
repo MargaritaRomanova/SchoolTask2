@@ -1,7 +1,7 @@
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static rita.model.Calculator.execute;
+import static model.Calculator.execute;
 
 public class PositiveCalculatorTest {
 
