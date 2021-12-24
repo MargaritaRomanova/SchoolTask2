@@ -13,35 +13,43 @@ public class Calculator {
         if (params[1] == null || params[2] == null) {
             throw new CalculatorException("The value can`t be NULL");
         }
-        if (params[2].equals("0") && params[0].equals("/")) {
+        if (params[2].equals("-0.0") || params[2].equals("0.0")
+                || params[2].equals("0") && params[0].equals("/")) {
             throw new CalculatorException("Can`t divide by 0");
         }
 
         try {
-            double param1 = Double.parseDouble(params[1]);
-            double param2 = Double.parseDouble(params[2]);
+            int param1 = Integer.parseInt(params[1]);
+            int param2 = Integer.parseInt(params[2]);
+
+            if ((param1 >= Integer.MAX_VALUE || param1 <= Integer.MIN_VALUE)
+                    || (param2 >= Integer.MAX_VALUE || param2 <= Integer.MIN_VALUE)) {
+                throw new CalculatorException("Invalid value");
+            }
 
             switch (params[0]) {
                 case "+": {
-                    double plus = param1 + param2;
-                    return Double.toString(plus);
+                    int plus = param1 + param2;
+                    return Integer.toString(plus);
                 }
                 case "-": {
-                    double minus = param1 - param2;
-                    return Double.toString(minus);
+                    int minus = param1 - param2;
+                    return Integer.toString(minus);
                 }
                 case "*": {
-                    double multiply = param1 * param2;
-                    return Double.toString(multiply);
+                    int multiply = param1 * param2;
+                    return Integer.toString(multiply);
                 }
                 case "/": {
-                    double divide = param1 / param2;
-                    return Double.toString(divide);
+                    int divide = param1 / param2;
+                    return Integer.toString(divide);
                 }
             }
         } catch (NumberFormatException e) {
             throw new CalculatorException("Invalid value");
         }
+
+
         return "";
     }
 }
