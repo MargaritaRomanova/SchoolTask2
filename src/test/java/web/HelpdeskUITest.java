@@ -75,7 +75,7 @@ public class HelpdeskUITest {
                     ticketPage.getPriority().contains(ticket.getPriority()),
                     "Приоритет тикета не совпадает");
             Assert.assertTrue(
-                    ticketPage.getQueue().contains(ticket.getQueue()),
+                    ticketPage.getQueue().contains("Queue: " + ticket.getQueue()),
                     "Queue тикета не совпадает");
         } finally {
             TicketPage ticketPage = new TicketPage();
