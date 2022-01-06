@@ -1,7 +1,10 @@
 package web;
 
+import io.qameta.allure.Attachment;
 import models.Ticket;
 import net.bytebuddy.utility.RandomString;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -35,13 +38,14 @@ public class HelpdeskUITest {
 
     @Test
     public void createTicketTest() {
+
+        // Заполняем объект класс Ticket необходимыми тестовыми данными
+        ticket = buildNewTicket();
+
+        // todo: открыть главную страницу
+        driver.get(System.getProperty("site.url"));
+
         try {
-            // Заполняем объект класс Ticket необходимыми тестовыми данными
-            ticket = buildNewTicket();
-
-            // todo: открыть главную страницу
-            driver.get(System.getProperty("site.url"));
-
             // todo: создать объект главной страницы и выполнить шаги по созданию тикета
             HelpdeskBasePage helpdeskBasePage = new HelpdeskBasePage();
             helpdeskBasePage.mainMenu().newTicket();
@@ -62,7 +66,7 @@ public class HelpdeskUITest {
 
             Assert.assertTrue(
                     ticketPage.getTicketTitle().contains(ticket.getTitle()),
-                    "название тикета не совпадает");
+                    "Название тикета не совпадает");
             Assert.assertEquals(
                     ticketPage.getEmail(),
                     ticket.getEMailAddress(),
@@ -93,7 +97,6 @@ public class HelpdeskUITest {
     protected Ticket buildNewTicket() {
         Ticket ticket = new Ticket();
         ticket.setTitle(RandomString.make(8));
-        // todo: заполнить остальные необходимые поля тикета
         ticket.setDescription(RandomString.make(20));
         ticket.setEMailAddress(RandomString.make(10) + "@google.com");
         ticket.setQueue("Billing Queries");

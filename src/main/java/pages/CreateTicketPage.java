@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import models.Ticket;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,8 +15,6 @@ public class CreateTicketPage extends HelpdeskBasePage {
     // Способ объявления элементы страницы, через аннотацию
     @FindBy(xpath = "//input[@id='id_title']")
     private WebElement inputProblemTitle;
-
-    // todo: остальные элементы
 
     @FindBy(xpath = "//select[@id='id_queue']")
     private WebElement inputQueue;
@@ -40,52 +39,58 @@ public class CreateTicketPage extends HelpdeskBasePage {
     /**
      * Создание тикета
      */
+    @Step("Cоздание тикета")
     public void createTicket(Ticket ticket) {
         fillProblemTitle(ticket.getTitle());
-        // todo: заполнение остальных полей
         fillQueue(ticket.getQueue());
         fillDescription(ticket.getDescription());
         fillEMailAddress(ticket.getEMailAddress());
         fillPriority(ticket.getPriority());
         createTicket();
+        saveScreenshot(driver);
     }
 
     /**
      * Заполнение поля "Summary of the problem"
      */
+    @Step("Заполнение поля 'Summary of the problem'")
     public void fillProblemTitle(String text) {
-        // todo: заполнить поле
         inputProblemTitle.sendKeys(text);
+        saveScreenshot(driver);
     }
 
-    // todo: методы заполнения остальных полей
-
+    @Step("Заполнение поля 'Queue'")
     public void fillQueue(String text) {
-        // todo: заполнить поле
         inputQueue.sendKeys(text);
+        saveScreenshot(driver);
     }
 
+    @Step("Заполнение поля 'Description of your issue'")
     public void fillDescription(String text) {
-        // todo: заполнить поле
         inputDescription.sendKeys(text);
+        saveScreenshot(driver);
     }
 
+    @Step("Заполнение поля 'Priority'")
     public void fillPriority(String value) {
-        // todo: заполнить поле
         Select selectObject = new Select(inputPrioritySelect);
         selectObject.selectByValue(value);
+        saveScreenshot(driver);
     }
 
+    @Step("Заполнение поля 'Your E-Mail Address'")
     public void fillEMailAddress(String text) {
-        // todo: заполнить поле
         inputEMailAddressTitle.sendKeys(text);
+        saveScreenshot(driver);
     }
 
     /**
      * Зажатие кнопки "Submit Ticket"
      */
+
+    @Step("Нажатие кнопки 'Submit Ticket'")
     public void createTicket() {
-        // todo: нажать кнопку создания задания
         submitTicketButton.click();
+        saveScreenshot(driver);
     }
 }

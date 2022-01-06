@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,8 +13,6 @@ public class TicketPage extends HelpdeskBasePage {
 
     @FindBy(xpath = "//thead[@class='thead-light']//ancestor::h3")
     private WebElement ticketTitle;
-
-    // todo: остальные поля тикета
 
     @FindBy(xpath = "//th[text()='Submitter E-Mail']")
     private WebElement email;
@@ -40,6 +39,7 @@ public class TicketPage extends HelpdeskBasePage {
     /**
      * Получить имя тикета
      */
+
     public String getTicketTitle() {
         return ticketTitle.getText();
     }
@@ -48,11 +48,9 @@ public class TicketPage extends HelpdeskBasePage {
      * Получить адрес почты
      */
     public String getEmail() {
-        // Получаем значение адреса почты
         return getValue(email);
     }
 
-    // todo: остальные методы получения значений полей
     public String getDescription() {
         return description.getText();
     }
@@ -62,7 +60,6 @@ public class TicketPage extends HelpdeskBasePage {
     }
 
     public String getPriority() {
-        // Получаем значение адреса почты
         return priority.getText();
     }
 
@@ -82,8 +79,10 @@ public class TicketPage extends HelpdeskBasePage {
                 .trim();
     }
 
+    @Step("Удаление созданного тикета")
     public void deleteTicket() {
         deleteBtn.click();
         agreeBtn.click();
+        saveScreenshot(driver);
     }
 }
