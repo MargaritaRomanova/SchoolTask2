@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -8,8 +9,6 @@ import org.openqa.selenium.support.PageFactory;
  * Страница авторизации
  */
 public class LoginPage extends HelpdeskBasePage {
-
-    // todo: элементы страницы
 
     @FindBy(xpath = "//input[contains(@id, 'username')]")
     private WebElement fillUsername;
@@ -33,13 +32,13 @@ public class LoginPage extends HelpdeskBasePage {
      * @param user     логин пользователя
      * @param password пароль пользователя
      */
+
+    @Step("Заполнение полей 'Username' и 'Password' и нажатие кнопки 'Login'")
     public void login(String user, String password) {
-        // todo: заполнить поля и нажать кнопку авторизации
         fillUsername.sendKeys(user);
         fillPassword.sendKeys(password);
         rememberPasswordCheckbox.click();
         loginBtn.click();
+        saveScreenshot(driver);
     }
-
-    // todo: методы работы с элементами
 }

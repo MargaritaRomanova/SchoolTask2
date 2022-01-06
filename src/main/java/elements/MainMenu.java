@@ -1,5 +1,6 @@
 package elements;
 
+import io.qameta.allure.Step;
 import models.Ticket;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -18,7 +19,6 @@ public class MainMenu {
 
     // todo: остальные элементы меню
     private WebElement logInBtn;
-    private WebElement homepageBtn;
     private WebElement allTicketsBtn;
     private WebElement searchTicket;
     private WebElement searchBtn;
@@ -31,7 +31,6 @@ public class MainMenu {
             searchTicket = driver.findElement(By.xpath("//input[@id='search_query']"));
             searchBtn = driver.findElement(By.xpath("//*[@class='fas fa-search']/parent::*"));
         } else {
-            homepageBtn = driver.findElement(By.xpath("//*[contains(text(), 'Homepage')]/parent::*"));
             logInBtn = driver.findElement(By.xpath("//*[contains(text(), 'Log In')]/parent::*"));
         }
     }
@@ -45,24 +44,22 @@ public class MainMenu {
         return true;
     }
 
+    @Step("Нажатие кнопки 'New Ticket'")
     public void newTicket() {
-        // todo: нажать кнопку создания нового тикета
         newTicketBtn.click();
     }
 
+    @Step("Нажатие кнопки 'Log In'")
     public void logIn() {
-        // todo: нажать кнопку авторизации
         logInBtn.click();
     }
 
-    public void homepage() {
-        homepageBtn.click();
-    }
-
+    @Step("Нажатие кнопки 'All Tickets'")
     public void allTickets() {
         allTicketsBtn.click();
     }
 
+    @Step("Ввод названия тикета в поле поиска и нажатие кнопки поиск")
     public void searchTicket(Ticket ticket) {
         setSearch(ticket.getTitle())
                 .search();
@@ -70,14 +67,13 @@ public class MainMenu {
 
     /* Если после вызова void метода, может потребоваться вызов другого метода этого же класса,
         то можно вернуть сам класс и вызвать следующий метод через точку. */
-    public MainMenu setSearch(String text) {
-        // todo: ввести значение в поле поиска
+
+    private MainMenu setSearch(String text) {
         searchTicket.sendKeys(text);
         return this;
     }
 
-    public void search() {
-        // todo: нажать кнопку поиска
+    private void search() {
         searchBtn.click();
     }
 }
