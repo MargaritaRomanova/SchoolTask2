@@ -9,7 +9,9 @@ import model.Ticket;
 import model.TicketData;
 import org.testng.annotations.BeforeClass;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
+import java.util.Date;
 import java.util.UUID;
 
 import static io.restassured.RestAssured.given;
@@ -46,6 +48,17 @@ public abstract class BaseTest {
         ticket.setTitle(UUID.randomUUID().toString());
         ticket.setQueue(1);
         ticket.setPriority(priority);
+        ticket.setAssigned_to(null);
+        ticket.setCreated(new Date());
+        ticket.setDue_date(new Date());
+        ticket.setKbitem(null);
+        ticket.setDescription("");
+        ticket.setMerged_to(null);
+        ticket.setModified(new Date());
+        ticket.setOn_hold(false);
+        ticket.setResolution("");
+        ticket.setSecret_key("");
+        ticket.setSubmitter_email("sdfghj@yandex.ru");
         return ticket;
     }
 
