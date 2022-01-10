@@ -44,17 +44,17 @@ public abstract class BaseTest {
     protected Ticket buildNewTicket(Status status, int priority) {
         // todo: создать объект с тестовыми данными
         Ticket ticket = new Ticket();
-        ticket.setStatus(status);
+        ticket.setStatus(status.getCode());
         ticket.setTitle(UUID.randomUUID().toString());
         ticket.setQueue(1);
         ticket.setPriority(priority);
         ticket.setAssigned_to(null);
-        ticket.setCreated(new Date());
-        ticket.setDue_date(new Date());
+        ticket.setCreated(new Date().toString());
+        ticket.setDue_date(new Date().toString());
         ticket.setKbitem(null);
         ticket.setDescription("");
         ticket.setMerged_to(null);
-        ticket.setModified(new Date());
+        ticket.setModified(new Date().toString());
         ticket.setOn_hold(false);
         ticket.setResolution("");
         ticket.setSecret_key("");

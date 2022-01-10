@@ -26,10 +26,10 @@ public class Ticket {
     private Integer status;
 
     private Integer id;
-    private Date due_date;
+    private String due_date;
     private Object assigned_to;
-    private Date created;
-    private Date modified;
+    private String created;
+    private String modified;
     private String submitter_email;
     private Boolean on_hold;
     private String description;
@@ -43,7 +43,7 @@ public class Ticket {
         return id;
     }
 
-    public void setDue_date(Date due_date) {
+    public void setDue_date(String due_date) {
         this.due_date = due_date;
     }
 
@@ -51,12 +51,13 @@ public class Ticket {
         this.assigned_to = assigned_to;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(String created) {
+
         this.created = created;
     }
 
-    public void setModified(Date modified) {
-        this.modified = modified;
+    public void setModified(String modified) {
+      this.modified = modified;
     }
 
     public void setSubmitter_email(String submitter_email) {
@@ -108,8 +109,8 @@ public class Ticket {
         return status;
     }
 
-    public void setStatus(Status status) {
-        this.status = status.getCode();
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public Integer getPriority() {
