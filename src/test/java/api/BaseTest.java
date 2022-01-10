@@ -6,7 +6,6 @@ import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import model.Status;
 import model.Ticket;
-import model.TicketData;
 import org.testng.annotations.BeforeClass;
 
 import javax.xml.crypto.Data;
@@ -54,6 +53,7 @@ public abstract class BaseTest {
         ticket.setKbitem(null);
         ticket.setDescription("");
         ticket.setMerged_to(null);
+        ticket.setLast_escalation(null);
         ticket.setModified(new Date().toString());
         ticket.setOn_hold(false);
         ticket.setResolution("");
@@ -62,15 +62,15 @@ public abstract class BaseTest {
         return ticket;
     }
 
-    protected TicketData createTicket(Ticket ticket) throws ExceptionInInitializerError {
+    protected Ticket createTicket(Ticket ticket) throws ExceptionInInitializerError {
         // todo: отправить HTTP запрос для создания тикета
-        TicketData ticketData = given()
+        Ticket ticketReturn = given()
                 .body(ticket)
                 .when()
                 .post("api/tickets/")
                 .then().log().all()
                 .statusCode(201)
-                .extract().as(TicketData.class);
-        return ticketData;
+                .extract().as(Ticket.class);
+        return ticketReturn;
     }
 }

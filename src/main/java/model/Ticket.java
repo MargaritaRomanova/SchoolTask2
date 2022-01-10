@@ -34,6 +34,9 @@ public class Ticket {
     private Boolean on_hold;
     private String description;
     private String resolution;
+
+
+
     private Object last_escalation;
     private String secret_key;
     private Object kbitem;
@@ -119,6 +122,14 @@ public class Ticket {
 
     public void setPriority(Integer priority) {
         this.priority = priority;
+    }
+
+    public Object getLast_escalation() {
+        return last_escalation;
+    }
+
+    public void setLast_escalation(Object last_escalation) {
+        this.last_escalation = last_escalation;
     }
 
     @Override
