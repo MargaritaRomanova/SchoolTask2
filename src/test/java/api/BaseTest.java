@@ -3,7 +3,6 @@ package api;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
-import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import model.Status;
 import model.Ticket;
@@ -13,7 +12,7 @@ import org.testng.annotations.BeforeClass;
 import java.io.IOException;
 import java.util.UUID;
 
-import static net.serenitybdd.rest.RestRequests.given;
+import static io.restassured.RestAssured.given;
 
 /**
  * Абстрактный класс, содержащий общие для всех тестов методы
@@ -38,7 +37,6 @@ public abstract class BaseTest {
                 .setContentType(ContentType.JSON)
                 .log(LogDetail.ALL)
                 .build();
-        RestAssured.filters(new ResponseLoggingFilter());
     }
 
     protected Ticket buildNewTicket(Status status, int priority) {

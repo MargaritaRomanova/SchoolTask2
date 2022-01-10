@@ -1,5 +1,9 @@
 package model;
 
+
+import com.google.gson.*;
+import com.google.gson.annotations.*;
+import com.google.gson.Gson.*;
 import com.google.gson.annotations.SerializedName;
 
 /**
