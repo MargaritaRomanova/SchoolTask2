@@ -8,10 +8,10 @@ import io.restassured.http.ContentType;
 import model.Status;
 import model.Ticket;
 import model.TicketData;
-import net.bytebuddy.utility.RandomString;
 import org.testng.annotations.BeforeClass;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import static net.serenitybdd.rest.RestRequests.given;
 
@@ -45,7 +45,7 @@ public abstract class BaseTest {
         // todo: создать объект с тестовыми данными
         Ticket ticket = new Ticket();
         ticket.setStatus(status);
-        ticket.setTitle(RandomString.make(20));
+        ticket.setTitle(UUID.randomUUID().toString());
         ticket.setQueue(1);
         ticket.setPriority(priority);
         return ticket;
