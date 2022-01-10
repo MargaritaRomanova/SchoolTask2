@@ -1,12 +1,6 @@
 package model;
 
-
-import com.google.gson.*;
-import com.google.gson.annotations.*;
-import com.google.gson.Gson.*;
 import com.google.gson.annotations.SerializedName;
-
-import java.util.Date;
 
 /**
  * Объект тикета (POJO)
@@ -25,21 +19,43 @@ public class Ticket {
     @SerializedName("status")
     private Integer status;
 
+    @SerializedName("id")
     private Integer id;
+
+    @SerializedName("due_date")
     private String due_date;
+
+    @SerializedName("assigned_to")
     private Object assigned_to;
+
+    @SerializedName("created")
     private String created;
+
+    @SerializedName("modified")
     private String modified;
+
+    @SerializedName("submitter_email")
     private String submitter_email;
+
+    @SerializedName("on_hold")
     private Boolean on_hold;
+
+    @SerializedName("description")
     private String description;
+
+    @SerializedName("resolution")
     private String resolution;
 
-
-
+    @SerializedName("last_escalation")
     private Object last_escalation;
+
+    @SerializedName("secret_key")
     private String secret_key;
+
+    @SerializedName("kbitem")
     private Object kbitem;
+
+    @SerializedName("merged_to")
     private Object merged_to;
 
     public Integer getId() {
@@ -55,12 +71,11 @@ public class Ticket {
     }
 
     public void setCreated(String created) {
-
         this.created = created;
     }
 
     public void setModified(String modified) {
-      this.modified = modified;
+        this.modified = modified;
     }
 
     public void setSubmitter_email(String submitter_email) {
@@ -90,7 +105,6 @@ public class Ticket {
     public void setMerged_to(Object merged_to) {
         this.merged_to = merged_to;
     }
-// todo: serialized поля, геттеры и сеттеры
 
     public String getTitle() {
         return title;

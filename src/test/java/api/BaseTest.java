@@ -6,9 +6,9 @@ import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import model.Status;
 import model.Ticket;
+
 import org.testng.annotations.BeforeClass;
 
-import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.util.Date;
 import java.util.UUID;
