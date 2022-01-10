@@ -17,7 +17,7 @@ public class Ticket {
     private Integer priority;
 
     @SerializedName("status")
-    private Integer status;
+    private int status;
 
     @SerializedName("id")
     private Integer id;
@@ -126,11 +126,11 @@ public class Ticket {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
-    public Integer getPriority() {
+    public int getPriority() {
         return priority;
     }
 
