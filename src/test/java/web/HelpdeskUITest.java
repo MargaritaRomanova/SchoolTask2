@@ -43,6 +43,7 @@ public class HelpdeskUITest {
             driver.get(System.getProperty("site.url"));
 
             // todo: создать объект главной страницы и выполнить шаги по созданию тикета
+            new MainPage();
             HelpdeskBasePage helpdeskBasePage = new HelpdeskBasePage();
             helpdeskBasePage.mainMenu().newTicket();
             CreateTicketPage createTicketPage = new CreateTicketPage();
@@ -54,8 +55,9 @@ public class HelpdeskUITest {
             loginPage.login(System.getProperty("user"), System.getProperty("password"));
 
             // todo: найти созданный тикет и проверить поля
-            helpdeskBasePage.mainMenu().allTickets();
-            helpdeskBasePage.mainMenu().searchTicket(ticket);
+            HelpdeskBasePage helpdeskBasePageAfterLogin = new HelpdeskBasePage();
+            helpdeskBasePageAfterLogin.mainMenu().allTickets();
+            helpdeskBasePageAfterLogin.mainMenu().searchTicket(ticket);
             TicketsPage ticketsPage = new TicketsPage();
             ticketsPage.openTicket(ticket);
             TicketPage ticketPage = new TicketPage();
@@ -93,7 +95,6 @@ public class HelpdeskUITest {
     protected Ticket buildNewTicket() {
         Ticket ticket = new Ticket();
         ticket.setTitle(RandomString.make(8));
-        // todo: заполнить остальные необходимые поля тикета
         ticket.setDescription(RandomString.make(20));
         ticket.setEMailAddress(RandomString.make(10) + "@google.com");
         ticket.setQueue("Billing Queries");

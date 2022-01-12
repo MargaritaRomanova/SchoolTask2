@@ -10,8 +10,6 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class TicketsPage extends HelpdeskBasePage {
 
-    // todo: элементы страницы поиска тикетов
-
     public TicketsPage() {
         PageFactory.initElements(driver, this);
     }
@@ -21,7 +19,6 @@ public class TicketsPage extends HelpdeskBasePage {
      */
 
     public void openTicket(Ticket ticket) {
-        // todo: найти и открыть тикет
         WebElement findTicket = driver.findElement(By.xpath("//a[contains(text(),'" + ticket.getTitle() + "')]"));
         findTicket.click();
     }

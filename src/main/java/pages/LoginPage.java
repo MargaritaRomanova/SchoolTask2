@@ -9,8 +9,6 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class LoginPage extends HelpdeskBasePage {
 
-    // todo: элементы страницы
-
     @FindBy(xpath = "//input[contains(@id, 'username')]")
     private WebElement fillUsername;
 
@@ -34,12 +32,9 @@ public class LoginPage extends HelpdeskBasePage {
      * @param password пароль пользователя
      */
     public void login(String user, String password) {
-        // todo: заполнить поля и нажать кнопку авторизации
         fillUsername.sendKeys(user);
         fillPassword.sendKeys(password);
         rememberPasswordCheckbox.click();
         loginBtn.click();
     }
-
-    // todo: методы работы с элементами
 }

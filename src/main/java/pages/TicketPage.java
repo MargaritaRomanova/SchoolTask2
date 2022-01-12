@@ -13,8 +13,6 @@ public class TicketPage extends HelpdeskBasePage {
     @FindBy(xpath = "//thead[@class='thead-light']//ancestor::h3")
     private WebElement ticketTitle;
 
-    // todo: остальные поля тикета
-
     @FindBy(xpath = "//th[text()='Submitter E-Mail']")
     private WebElement email;
 
@@ -48,11 +46,9 @@ public class TicketPage extends HelpdeskBasePage {
      * Получить адрес почты
      */
     public String getEmail() {
-        // Получаем значение адреса почты
         return getValue(email);
     }
 
-    // todo: остальные методы получения значений полей
     public String getDescription() {
         return description.getText();
     }
@@ -62,7 +58,6 @@ public class TicketPage extends HelpdeskBasePage {
     }
 
     public String getPriority() {
-        // Получаем значение адреса почты
         return priority.getText();
     }
 
@@ -74,11 +69,8 @@ public class TicketPage extends HelpdeskBasePage {
      */
     private String getValue(WebElement columnElem) {
         return columnElem
-                // Находи следующий элемент находящийся в том же теге
                 .findElement(By.xpath("./following-sibling::td[1]"))
-                // Получаем текст
                 .getText()
-                // Обрезаем лишние пробелы
                 .trim();
     }
 
